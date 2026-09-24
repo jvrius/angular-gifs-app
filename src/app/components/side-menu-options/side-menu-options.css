@@ -1,0 +1,34 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+
+nav > a {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  gap: 0.6rem;
+  border-radius: 0.4rem;
+  transition: background-color 0.25s;
+}
+
+nav > a.active {
+  background-color: oklch(39.1% 0.09 240.876); /* sky-900 */
+}
+
+nav > a:not(.active):hover {
+  background-color: var(--menu-item-hover);
+}
+
+nav > a .label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+nav > a .description {
+  font-size: 0.9rem;
+  margin-top: 0.1rem;
+  color: var(--menu-text-muted);
+}

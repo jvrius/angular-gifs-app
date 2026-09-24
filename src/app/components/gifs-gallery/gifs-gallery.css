@@ -1,0 +1,17 @@
+.container {
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.6rem;
+}
+
+img {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid var(--app-background);
+}

@@ -1,0 +1,6 @@
+<div class="container">
+  <input class="input" id="input-search" type="text" placeholder="Buscar"
+         [value]="value()" (input)="0" (keyup.enter)="onSearch.emit(input.value)" #input>
+  <app-icon name="close" class="clear-icon" [class.active]="input.value.length > 0" (click)="onClear.emit(input)" />
+  <app-icon name="search" class="search-icon" (click)="onSearch.emit(input.value)" />
+</div>

@@ -1,0 +1,13 @@
+<nav>
+  @for (query of searchService.historyKeys(); track query) {
+    <div class="container">
+      <a class="query" [routerLink]="['history', query]" routerLinkActive="active">
+        <app-icon name="saved-search" size="2rem" />
+        <p class="label">{{ query.replaceAll('-', ' ') }}</p>
+      </a>
+      <a class="close-icon" >
+        <app-icon name="close" size="1.5rem" (click)="removeAndRedirect(query)" />
+      </a>
+    </div>
+  }
+</nav>

@@ -1,0 +1,41 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+nav > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+nav > .container > .query {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.4rem;
+  transition: background-color 0.25s;
+}
+
+nav > .container > .query.active {
+  background-color: oklch(39.1% 0.09 240.876); /* sky-900 */
+}
+
+nav > .container > a:not(.active):hover {
+  background-color: var(--menu-item-hover);
+}
+
+nav > .container > .query .label {
+  color: var(--menu-text-muted);
+}
+
+nav > .container .close-icon {
+  border-radius: 0.4rem;
+  padding: 0.3rem;
+  cursor: pointer;
+}

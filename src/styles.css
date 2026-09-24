@@ -1,0 +1,198 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-latin-opsz-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jakarta';
+  src: url('/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --app-background: oklch(98.5% 0 none); /* ..............: neutral-50  */
+  --app-text: oklch(14.5% 0 none); /* ....................: neutral-950 */
+  --app-text-muted: oklch(55.6% 0 none); /* ..............: neutral-500 */
+
+  --main-background: oklch(87% 0 none); /* ...............: neutral-300 */
+
+  --menu-background: oklch(32% 0 none); /* ...............: neutral-750 */
+  --menu-text: oklch(92.2% 0 none); /* ...................: neutral-200 */
+  --menu-text-muted: oklch(70.8% 0 none); /* .............: neutral-400 */
+  --menu-item-hover: oklch(37.1% 0 none); /* .............: neutral-700 */
+
+  --button-primary-background: oklch(20.5% 0 none); /* ...: neutral-900 */
+  --button-primary-foreground: oklch(92.2% 0 none); /* ...: neutral-200 */
+  --button-primary-hover: oklch(37.1% 0 none); /* ........: neutral-700 */
+
+  --button-secondary-background: oklch(87% 0 none); /* ...: neutral-300 */
+  --button-secondary-foreground: oklch(26.9% 0 none); /* .: neutral-800 */
+  --button-secondary-hover: oklch(78.9% 0 none); /* ......: neutral-450 */
+
+  --button-outline-foreground: oklch(26.9% 0 none); /* ...: neutral-800 */
+  --button-outline-border: oklch(81% 0 none); /* .........: neutral-300 */
+  --button-outline-hover: oklch(87% 0 none); /* ..........: neutral-300 */
+
+  --input-background: oklch(92.2% 0 none); /* ............: neutral-200 */
+  --input-foreground: oklch(14.5% 0 none); /* ............: neutral-950 */
+  --input-placeholder: oklch(55.6% 0 none); /* ...........: neutral-500 */
+  --input-border-focus: oklch(81% 0 none); /* ............: neutral-300 */
+
+  --card-background: oklch(98.5% 0 none); /* .............: neutral-50  */
+  --card-border: oklch(81% 0 none); /* ...................: neutral-300 */
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--app-text);
+  background-color: var(--app-background);
+}
+
+app-root {
+  display: flex;
+  height: 100dvh;
+}
+
+main {
+  flex: 1;
+  background-color: var(--main-background);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 0.3rem;
+  padding: 0.52rem 0.86rem;
+  border: none;
+  border-radius: 1.3rem;
+  cursor: pointer;
+  transition: background-color 0.25s, opacity 0.1s;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &.primary-button {
+    color: var(--button-primary-foreground);
+    background-color: var(--button-primary-background);
+
+    &:not(:disabled):hover {
+      background-color: var(--button-primary-hover);
+    }
+  }
+
+  &.secondary-button {
+    color: var(--button-secondary-foreground);
+    background-color: var(--button-secondary-background);
+
+    &:not(:disabled):hover {
+      background-color: var(--button-secondary-hover);
+    }
+  }
+
+  &.outline-button {
+    border: 1px solid var(--button-outline-border);
+    color: var(--button-outline-foreground);
+    background-color: transparent;
+
+    &:not(:disabled):hover {
+      background-color: var(--button-outline-hover);
+    }
+  }
+
+  &.icon-button {
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.4rem;
+    color: var(--button-primary-background);
+    background-color: var(--app-background);
+    border: 1px solid var(--button-outline-border);
+    box-shadow: 0 1px var(--button-outline-border);
+
+    &:not(:disabled):active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-height: fit-content;
+  gap: 1.4rem;
+  padding: 1.4rem;
+  border-radius: 1rem;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 0 2px var(--card-border);
+  background-color: var(--card-background);
+}
+
+.input {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.6rem 0.8rem;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--input-background);
+  transition: box-shadow 0.25s;
+
+  &:focus {
+    box-shadow: 0 0 0 2px oklch(50% 0.134 242.749); /* sky-700 */;
+  }
+
+  &::placeholder {
+    color: var(--input-placeholder);
+  }
+}
+
+.list-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--card-border);
+
+  &:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+}
+
