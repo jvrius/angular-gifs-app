@@ -4,14 +4,49 @@
   scrollbar-width: none;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.6rem;
+.masonry {
+  column-count: 1;
+  column-gap: 0.5rem;
 }
 
 img {
   width: 100%;
   border-radius: 0.8rem;
-  border: 1px solid var(--app-background);
+  border: 3px solid var(--main-background);
+}
+
+@media (width >= 40rem) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (width >= 60rem) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+@media (width >= 80rem) {
+  .masonry {
+    column-count: 4;
+  }
+}
+
+@media (width >= 100rem) {
+  .masonry {
+    column-count: 5;
+  }
+}
+
+@media (width >= 120rem) {
+  .masonry {
+    column-count: 6;
+  }
+}
+
+@media (width >= 140rem) {
+  .masonry {
+    column-count: 7;
+  }
 }
