@@ -4,18 +4,17 @@ import { environment } from '../../environments/environment';
 import type { Giphy } from '../interfaces/giphy';
 import { type Gif, toGif } from '../interfaces/gif';
 
-function loadFromLocalStorage() {
-  return JSON.parse(localStorage.getItem('history') ?? '{}');
+function loadCacheFromLocalStorage() {
+  return JSON.parse(localStorage.getItem('cache') ?? '{}');
 }
 
 @Service()
 export class SearchService {
   query = signal<string>('');
-  historyCache = signal<Record<string, Gif[]>>(loadFromLocalStorage());
-  historyKeys = computed(() => Object.keys(this.historyCache()));
+  cache = signal<Record<string, Gif[]>>(loadCacheFromLocalStorage());
+  history = computed(() => Object.keys(this.cache()));
 
-  gifs = httpResource<Gif[]>(
-    () => {
+  gifs = httpResource(() => {
       if (!this.query()) return undefined;
 
       return {
@@ -29,10 +28,10 @@ export class SearchService {
     },
     {
       parse: (response): Gif[] => {
-        const key: string = this.query().replaceAll(' ', '-');
         const value: Gif[] = (response as Giphy).data.map(toGif);
+        const key: string = this.query().replaceAll(' ', '-');
 
-        this.historyCache.update((history) => ({
+        this.cache.update((history) => ({
           ...history,
           [key]: value,
         }));
@@ -41,16 +40,16 @@ export class SearchService {
     },
   );
 
-  saveHistoryToLocalStorage = effect(() => {
-    localStorage.setItem('history', JSON.stringify(this.historyCache()));
+  saveCacheToLocalStorage = effect(() => {
+    localStorage.setItem('cache', JSON.stringify(this.cache()));
   });
 
-  getFromCache(query: string): Gif[] {
-    return this.historyCache()[query] ?? [];
+  loadCachedQuery(query: string): Gif[] {
+    return this.cache()[query] ?? [];
   }
 
-  removeFromCache(query: string): void {
-    this.historyCache.update((history) => {
+  removeCachedQuery(query: string): void {
+    this.cache.update((history) => {
       const newCache = { ...history };
       delete newCache[query];
       return newCache;

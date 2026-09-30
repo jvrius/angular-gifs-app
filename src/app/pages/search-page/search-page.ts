@@ -12,13 +12,13 @@ import { InputSearch } from '../../components/input-search/input-search';
 export class SearchPage {
   protected searchService = inject(SearchService);
 
-  protected search(query: string): void {
+  protected setQuery(query: string): void {
     if (query) {
       this.searchService.query.set(query.trim().toLowerCase());
     }
   }
 
-  protected clear(input: HTMLInputElement): void {
+  protected resetQuery(input: HTMLInputElement): void {
     if (this.searchService.query()) {
       this.searchService.query.set('');
     } else {

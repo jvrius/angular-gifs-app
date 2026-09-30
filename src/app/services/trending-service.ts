@@ -6,15 +6,14 @@ import { type Gif, toGif } from '../interfaces/gif';
 
 @Service()
 export class TrendingService {
-   gifs = httpResource<Gif[]>(() => {
-      return {
-        url: `${environment.giphyBaseUrl}/trending`,
-        params: {
-          api_key: environment.giphyApiKey,
-          limit: 50,
-        },
-      };
-    },
+  gifs = httpResource<Gif[]>(
+    () => ({
+      url: `${environment.giphyBaseUrl}/trending`,
+      params: {
+        api_key: environment.giphyApiKey,
+        limit: 50,
+      },
+    }),
     {
       parse: (value) => (value as Giphy).data.map(toGif),
     },

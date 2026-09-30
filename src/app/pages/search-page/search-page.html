@@ -1,4 +1,4 @@
-<app-input-search [value]="searchService.query()" (onClear)="clear($event)" (onSearch)="search($event)" />
+<app-input-search [value]="searchService.query()" (onClear)="resetQuery($event)" (onSearch)="setQuery($event)" />
 
 <section class="gallery">
   @if (searchService.gifs.hasValue()) {

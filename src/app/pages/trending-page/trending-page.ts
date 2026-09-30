@@ -9,5 +9,5 @@ import { TrendingService } from '../../services/trending-service';
   styleUrl: './trending-page.css',
 })
 export class TrendingPage {
-  protected TrendingService = inject(TrendingService);
+  protected trendingService = inject(TrendingService);
 }

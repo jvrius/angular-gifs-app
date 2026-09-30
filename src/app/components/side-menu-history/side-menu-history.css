@@ -12,7 +12,7 @@ nav > .container {
   gap: 0.6rem;
 }
 
-nav > .container > .query {
+nav > .container > .key {
   display: flex;
   flex: 1;
   align-items: center;
@@ -22,20 +22,19 @@ nav > .container > .query {
   transition: background-color 0.25s;
 }
 
-nav > .container > .query.active {
+nav > .container > .key.active {
   background-color: oklch(39.1% 0.09 240.876); /* sky-900 */
 }
 
-nav > .container > a:not(.active):hover {
+nav > .container > .key:not(.active):hover {
   background-color: var(--menu-item-hover);
 }
 
-nav > .container > .query .label {
+nav > .container > .key .label {
   color: var(--menu-text-muted);
 }
 
 nav > .container .close-icon {
   border-radius: 0.4rem;
-  padding: 0.3rem;
   cursor: pointer;
 }

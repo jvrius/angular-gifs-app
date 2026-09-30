@@ -14,15 +14,15 @@ export class SideMenuHistory {
   protected searchService = inject(SearchService);
 
   removeAndRedirect(query: string): void {
-    this.searchService.removeFromCache(query);
+    this.searchService.removeCachedQuery(query);
 
     if (this.router.url.includes(query)) {
-      const keys: string[] = this.searchService.historyKeys();
+      const keys: string[] = this.searchService.history();
 
       if (keys.length > 0) {
-        this.router.navigate(['/history', keys[0]]);
+        this.router.navigate(['history', keys[0]]);
       } else {
-        this.router.navigate(['/search']);
+        this.router.navigate(['search']);
       }
     }
   }
